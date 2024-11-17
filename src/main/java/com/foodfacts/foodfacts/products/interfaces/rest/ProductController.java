@@ -48,4 +48,29 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search")
+    public List<Product> searchProductsByName(@RequestParam String name) {
+        return productService.getProductsByName(name);
+    }
+
+    @GetMapping("/category")
+    public List<Product> getProductsByCategory(@RequestParam Long categoryId) {
+        return productService.getProductsByCategory(categoryId);
+    }
+
+    @GetMapping("/order/asc")
+    public List<Product> getProductsOrderedByNameAsc() {
+        return productService.getProductsOrderedByNameAsc();
+    }
+
+    @GetMapping("/order/desc")
+    public List<Product> getProductsOrderedByNameDesc() {
+        return productService.getProductsOrderedByNameDesc();
+    }
+
+    @GetMapping("/search/order/asc")
+    public List<Product> searchProductsByNameAndOrderByNameAsc(@RequestParam String name) {
+        return productService.searchProductsByNameAndOrderByNameAsc(name);
+    }
 }

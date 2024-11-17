@@ -40,4 +40,25 @@ public class ProductService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+
+    public List<Product> getProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Product> getProductsByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
+
+    public List<Product> getProductsOrderedByNameAsc() {
+        return productRepository.findAllByOrderByNameAsc();
+    }
+
+    public List<Product> getProductsOrderedByNameDesc() {
+        return productRepository.findAllByOrderByNameDesc();
+    }
+
+    public List<Product> searchProductsByNameAndOrderByNameAsc(String name) {
+        return productRepository.searchByNameAndOrderByNameAsc(name);
+    }
 }
