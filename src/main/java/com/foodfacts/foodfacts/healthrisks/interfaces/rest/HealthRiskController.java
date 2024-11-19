@@ -7,10 +7,7 @@ import com.foodfacts.foodfacts.healthrisks.interfaces.rest.resources.HealthRiskR
 import com.foodfacts.foodfacts.healthrisks.interfaces.rest.transform.HealthRiskResourceFromEntityAssembler;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -19,6 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "healthRisk", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Health Risks")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HealthRiskController {
 
     private final HealthRiskQueryService healthRiskQueryService;
