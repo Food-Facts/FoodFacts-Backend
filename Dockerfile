@@ -1,5 +1,13 @@
 FROM amazoncorretto:23-alpine-jdk
+WORKDIR /app
 
-COPY target/FoodFacts-0.0.1-SNAPSHOT.jar /api/v1.jar
+# Copia los archivos necesarios
+COPY pom.xml .
+COPY src ./src
 
-ENTRYPOINT ["java", "-jar", "/api/v1.jar"]
+# Instala Maven
+RUN yum update -y && \
+    yum install -y maven
+
+# Ejecuta la aplicación directamente
+CMD ["mvn", "spring-boot:run"]

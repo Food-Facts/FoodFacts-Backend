@@ -14,12 +14,12 @@ import lombok.Setter;
 public class HealthRisk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "Unique identifier for the health risk", example = "1")
+    @Schema(description = "Id", example = "1")
     private Long id;
 
-    @Schema(description = "Title of the health risk", example = "High Blood Pressure")
+    @Schema(description = "Title", example = "High Blood Pressure")
     private String title;
 
-    @Schema(description = "Description of the health risk", example = "A condition in which the force of the blood against the artery walls is too high.")
+    @Schema(description = "Description", example = "A condition in which the force of the blood against the artery walls is too high.")
     private String description;
 }

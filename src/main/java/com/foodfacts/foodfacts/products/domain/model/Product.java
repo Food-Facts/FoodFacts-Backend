@@ -15,44 +15,42 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "Unique identifier for the product", example = "0")
+    @Schema(description = "id", example = "0")
     private Long id;
 
-    @Schema(description = "Name of the product", example = "String")
+    @Schema(description = "Name", example = "String")
     private String name;
 
-    @Schema(description = "Description of the product", example = "String")
+    @Schema(description = "Description", example = "String")
     private String description;
 
-    @Schema(description = "Category of the product", example = "String")
+    @Schema(description = "Category", example = "String")
     private String category;
 
-    @Schema(description = "Brand of the product", example = "String")
+    @Schema(description = "Brand", example = "String")
     private String brand;
 
-    @Schema(description = "Size of one portion in grams", example = "0")
+    @Schema(description = "Size_Portion ", example = "0")
     private int portionSize;
 
-    @Schema(description = "Calories per portion", example = "0")
+    @Schema(description = "Calories n", example = "0")
     private int calories;
 
-    @Schema(description = "Carbohydrates per portion in grams", example = "0")
+    @Schema(description = "Carbohydrates ", example = "0")
     private int carbohydrates;
 
-    @Schema(description = "Sugar content per portion in grams", example = "0")
+    @Schema(description = "Sugar", example = "0")
     private int sugar;
 
-    @Schema(description = "Sodium content per portion in milligrams", example = "0")
+    @Schema(description = "Sodium", example = "0")
     private int sodium;
 
-    @Schema(description = "Fat content per portion in grams", example = "0")
+    @Schema(description = "Fat", example = "0")
     private int fat;
 
-    @Schema(description = "Protein content per portion in grams", example = "0")
+    @Schema(description = "Protein", example = "0")
     private int proteins;
 
-    @Schema(description = "Fiber content per portion in grams", example = "0")
+    @Schema(description = "Fiber", example = "0")
     private int fibers;
-
-    // Getters and Setters (handled by Lombok)
 }
