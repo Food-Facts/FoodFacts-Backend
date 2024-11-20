@@ -28,4 +28,10 @@ public class NutritionistsController {
         Optional<Nutritionist> nutritionist = nutritionistService.getNutritionistById(id);
         return nutritionist.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @PostMapping
+    public ResponseEntity<Nutritionist> createNutritionist(@RequestBody Nutritionist nutritionist) {
+        Nutritionist createdNutritionist = nutritionistService.createNutritionist(nutritionist);
+        return ResponseEntity.ok(createdNutritionist);
+    }
 }
