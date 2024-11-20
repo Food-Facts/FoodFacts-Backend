@@ -1,13 +1,19 @@
 FROM amazoncorretto:23-alpine-jdk
 WORKDIR /app
 
-# Copia los archivos necesarios
+# Instala las herramientas necesarias
+RUN apk update && \
+    apk add --no-cache maven
+
+# Copia los archivos del proyecto
 COPY pom.xml .
 COPY src ./src
 
-# Instala Maven
-RUN yum update -y && \
-    yum install -y maven
+# Construye la aplicación
+RUN mvn clean package -DskipTests
 
-# Ejecuta la aplicación directamente
-CMD ["mvn", "spring-boot:run"]
+# Expone el puerto de la aplicación
+EXPOSE 8080
+
+# Ejecuta la aplicación
+ENTRYPOINT ["java", "-jar", "/app/target/FoodFacts-0.0.1-SNAPSHOT.jar"]
