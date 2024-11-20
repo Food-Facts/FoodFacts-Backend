@@ -4,8 +4,6 @@ import com.foodfacts.foodfacts.healthrisks.domain.model.aggregates.HealthRisk;
 import com.foodfacts.foodfacts.healthrisks.domain.model.queries.GetHealthRiskByIdQuery;
 import com.foodfacts.foodfacts.healthrisks.domain.services.HealthRiskQueryService;
 import com.foodfacts.foodfacts.healthrisks.domain.services.HealthRiskCommandService;
-import com.foodfacts.foodfacts.healthrisks.interfaces.rest.resources.HealthRiskResource;
-import com.foodfacts.foodfacts.healthrisks.interfaces.rest.transform.HealthRiskResourceFromEntityAssembler;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +29,9 @@ public class HealthRiskController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<HealthRiskResource> getHealthRiskById(@PathVariable Long id) {
+    public ResponseEntity<HealthRisk> getHealthRiskById(@PathVariable Long id) {
         Optional<HealthRisk> healthRisk = healthRiskQueryService.handle(new GetHealthRiskByIdQuery(id));
-        return healthRisk.map(source -> ResponseEntity.ok(HealthRiskResourceFromEntityAssembler.toResourceFromEntity(source)))
+        return healthRisk.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 

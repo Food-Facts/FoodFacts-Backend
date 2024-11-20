@@ -11,37 +11,24 @@ import java.util.Optional;
 @Service
 public class NutritionistService {
 
-    @Autowired
-    private NutritionistRepository nutritionistRepository;
+    private final NutritionistRepository nutritionistRepository;
 
-    public List<Nutritionist> getAllNutritionists() {
-        return nutritionistRepository.findAll();
+    public NutritionistService(NutritionistRepository nutritionistRepository) {
+        this.nutritionistRepository = nutritionistRepository;
     }
 
-    public Optional<Nutritionist> getNutritionistById(Long id) {
-        return nutritionistRepository.findById(id);
-    }
-
+    // Method to create a new nutritionist (POST)
     public Nutritionist createNutritionist(Nutritionist nutritionist) {
         return nutritionistRepository.save(nutritionist);
     }
 
-    public Nutritionist updateNutritionist(Long id, Nutritionist nutritionistDetails) {
-        Optional<Nutritionist> nutritionist = nutritionistRepository.findById(id);
-        if (nutritionist.isPresent()) {
-            Nutritionist updatedNutritionist = nutritionist.get();
-            updatedNutritionist.setName(nutritionistDetails.getName());
-            updatedNutritionist.setSpecialty(nutritionistDetails.getSpecialty());
-            updatedNutritionist.setExperience(nutritionistDetails.getExperience());
-            updatedNutritionist.setEmail(nutritionistDetails.getEmail());
-            updatedNutritionist.setPhone(nutritionistDetails.getPhone());
-            return nutritionistRepository.save(updatedNutritionist);
-        } else {
-            return null;
-        }
+    // Method to get a nutritionist by ID (GET)
+    public Optional<Nutritionist> getNutritionistById(Long id) {
+        return nutritionistRepository.findById(id);
     }
 
-    public void deleteNutritionist(Long id) {
-        nutritionistRepository.deleteById(id);
+    // Method to get all nutritionists (GET)
+    public List<Nutritionist> getAllNutritionists() {
+        return nutritionistRepository.findAll();
     }
 }
