@@ -1,5 +1,6 @@
 package com.foodfacts.foodfacts.users.domain.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +14,21 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier for the user", example = "1")
     private Long id;
+
+    @Schema(description = "First name of the user", example = "John")
     private String firstName;
+
+    @Schema(description = "Last name of the user", example = "Doe")
     private String lastName;
+
+    @Schema(description = "Email of the user", example = "john.doe@example.com")
     private String email;
+
+    @Schema(description = "Password of the user", example = "password123")
     private String password;
+
+    @Schema(description = "Date of birth of the user", example = "1990-01-01")
     private String dateOfBirth;
 }
