@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
-
+@CrossOrigin(origins = "*") // Allow all origins for deployment
 public class ProductController {
 
     @Autowired
