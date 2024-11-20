@@ -1,5 +1,6 @@
 package com.foodfacts.foodfacts.users.domain.model.aggregates;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.foodfacts.foodfacts.users.domain.model.commands.CreateUserCommand;
 import com.foodfacts.foodfacts.users.domain.model.valueobjects.EmailAddress;
 import com.foodfacts.foodfacts.users.domain.model.valueobjects.FullName;
@@ -8,6 +9,7 @@ import com.foodfacts.foodfacts.shared.domain.model.aggregates.AuditableAbstractA
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -31,7 +33,9 @@ public class User extends AuditableAbstractAggregateRoot<User> {
             @AttributeOverride(name = "value", column = @Column(name = "password"))})
     private Password password;
 
+    @Setter
     @Getter
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
 
     // Existing constructors...
@@ -57,4 +61,5 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     public void updatePassword(String password) {
         this.password = new Password(password);
     }
+
 }

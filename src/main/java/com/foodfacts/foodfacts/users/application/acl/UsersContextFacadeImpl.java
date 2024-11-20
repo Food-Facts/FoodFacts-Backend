@@ -25,7 +25,7 @@ public class UsersContextFacadeImpl {
     }
 
     public Long createUser(String firstName, String lastName, String email, String password, String dateOfBirth) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dob = LocalDate.parse(dateOfBirth, formatter);
         CreateUserCommand createUserCommand = new CreateUserCommand(firstName, lastName, email, password, dob);
         Optional<User> user = userCommandService.handle(createUserCommand);
@@ -44,7 +44,7 @@ public class UsersContextFacadeImpl {
     }
 
     public boolean updateUser(Long id, String firstName, String lastName, String email, String password, String dateOfBirth) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dob = LocalDate.parse(dateOfBirth, formatter);
         UpdateUserCommand updateUserCommand = new UpdateUserCommand(id, firstName, lastName, email, password, dob);
         Optional<User> user = userCommandService.handle(updateUserCommand);

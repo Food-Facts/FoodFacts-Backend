@@ -23,6 +23,10 @@ public class UserCommandServiceImpl implements UserCommandService {
     @Transactional
     public Optional<User> handle(CreateUserCommand command) {
         User user = new User();
+        user.updateFullName(command.firstName(), command.lastName());
+        user.updateEmailAddress(command.email());
+        user.updatePassword(command.password());
+        user.setDateOfBirth(command.dateOfBirth());
         return Optional.of(userRepository.save(user));
     }
 
@@ -34,6 +38,7 @@ public class UserCommandServiceImpl implements UserCommandService {
         user.updateFullName(command.firstName(), command.lastName());
         user.updateEmailAddress(command.email());
         user.updatePassword(command.password());
+        user.setDateOfBirth(command.dateOfBirth());
         return Optional.of(userRepository.save(user));
     }
 
