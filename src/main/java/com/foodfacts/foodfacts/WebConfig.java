@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOriginPatterns("*") // Use allowedOriginPatterns instead of allowedOrigins
+                        .allowedOriginPatterns("https://foodfacts-backend-production.up.railway.app" ) // Specify allowed origins
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
