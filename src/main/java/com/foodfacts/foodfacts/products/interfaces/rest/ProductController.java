@@ -10,12 +10,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/products")
-@CrossOrigin(origins = "*") // Allow all origins for deployment
+@RequestMapping("/api/products")
+@CrossOrigin(origins = "*")
 public class ProductController {
 
+    private final ProductService productService;
+
     @Autowired
-    private ProductService productService;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {

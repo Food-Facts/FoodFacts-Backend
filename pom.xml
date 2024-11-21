@@ -103,7 +103,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.foodfacts.foodfacts.FoodFactsApplication</mainClass>
+					<mainClass>com.food-facts.food-facts.FoodFactsApplication</mainClass>
 					<includeSystemScope>true</includeSystemScope>
 				</configuration>
 			</plugin>

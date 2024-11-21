@@ -14,9 +14,9 @@ import java.util.Optional;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "healthRisk", produces = APPLICATION_JSON_VALUE)
-@Tag(name = "Health Risks")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/api/healthRisks", produces = APPLICATION_JSON_VALUE)
+@Tag(name = "Health Risks", description = "Health Risks Management Endpoints")
+@CrossOrigin(origins = "*")
 public class HealthRiskController {
 
     private final HealthRiskQueryService healthRiskQueryService;
@@ -28,7 +28,7 @@ public class HealthRiskController {
         this.healthRiskCommandService = healthRiskCommandService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<HealthRisk> getHealthRiskById(@PathVariable Long id) {
         Optional<HealthRisk> healthRisk = healthRiskQueryService.handle(new GetHealthRiskByIdQuery(id));
         return healthRisk.map(ResponseEntity::ok)

@@ -16,11 +16,8 @@ import java.util.Optional;
 @Tag(name = "Nutritionists", description = "Available Nutritionists Values Endpoints")
 public class NutritionistsController {
 
-    private final NutritionistService nutritionistService;
-
-    public NutritionistsController(NutritionistService nutritionistService) {
-        this.nutritionistService = nutritionistService;
-    }
+    @Autowired
+    private NutritionistService nutritionistService;
 
     @GetMapping
     public List<Nutritionist> getAllNutritionists() {
